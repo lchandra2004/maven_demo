@@ -3,13 +3,13 @@ pipeline {
     stages {
 stage('scm') {
 steps {
-    git 'https://github.com/ganeshlovesdevops/maven_demo.git'
+    git 'https://github.com/lchandra2004/maven_demo.git'
     }
 }
     stage('build') {
     steps {
         withMaven(maven : 'mymaven'){
-        bat "mvn clean install"
+        sh "mvn clean install"
     }
     }
 }
@@ -20,7 +20,7 @@ steps {
 }
     stage('deploy') {
 steps {
-    bat 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\raghuproject\\gameoflife-web\\target\\*.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\"'
+    sh 'copy "C:\\Program Files (x86)\\Jenkins\\workspace\\raghuproject\\gameoflife-web\\target\\*.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\"'
     }
 }
 }
